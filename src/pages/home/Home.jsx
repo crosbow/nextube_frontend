@@ -1,18 +1,16 @@
-import VideoCard from "../../components/VideoCard";
+import FeaturedVideo from "./components/FeaturedVideo";
+import RecommendedVideos from "./components/RecommendedVideos";
+import TrendingVideos from "./components/TrendingVideos";
 
 const Home = () => {
   return (
-    <div className="flex m-2">
-      <div className="md:px-6 px-1 w-full">
-        <div className="flex flex-col overflow-scroll h-screen pb-[12%] ">
-          <div className="grid grid-cols-3 gap-4">
-            {/* youtube video  */}
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-          </div>
-        </div>
+    <div className="py-8 ">
+      <div>
+        <FeaturedVideo />
+        {/* Trending Now Section */}
+        <TrendingVideos />
+        {/* Recommended For You Section */}
+        <RecommendedVideos />
       </div>
     </div>
   );

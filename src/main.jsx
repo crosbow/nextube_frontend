@@ -4,8 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
-import ProfileHome from "./pages/profile/ProfileHome";
+import Watch from "./pages/watch-video/Watch";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,31 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <ProfileHome />,
+            element: <h2>Home</h2>,
+          },
+          {
+            path: "videos",
+            element: <h2>Videos</h2>,
+          },
+          {
+            path: "playlists",
+            element: <h2>Playlists</h2>,
+          },
+          {
+            path: "tweets",
+            element: <h2>Tweets</h2>,
           },
         ],
       },
+      {
+        path: "/watch/3soSxt",
+        element: <Watch />,
+      },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

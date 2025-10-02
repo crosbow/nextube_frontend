@@ -1,40 +1,36 @@
-const VideoCard = () => {
+const VideoCard = ({ glass }) => {
   return (
-    <div className="flex flex-col pt-3">
-      <div className="rounded-lg  overflow-hidden relative cursor-pointer">
-        <img
-          className=""
-          src="https://i.ytimg.com/vi/npfvZd7Vt9I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA05jvnxCVT2CSwpforthQcu91scg"
-          alt="thambnail"
-        />
-        <span className="font-bold text-white px-1 py-[1px] bg-black bg-opacity-80 text-sm rounded-md absolute right-1 bottom-1">
-          8:10
+    <div
+      className={`video-card cursor-pointer rounded-2xl ${
+        glass && "glass p-4"
+      }`}
+    >
+      <div className="relative rounded-xl overflow-hidden mb-4 group">
+        <div className="aspect-video bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+          <svg
+            className="w-16 h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <span className="absolute top-3 right-3 px-2 py-1 rounded-lg bg-black bg-opacity-70 text-xs font-semibold">
+          25:18
         </span>
       </div>
-      {/* video title and description */}
-      <div className="flex pt-3 gap-2 group cursor-pointer">
-        <div className="pt-1">
-          <img
-            className="rounded-full object-cover w-11"
-            src="https://avatars.githubusercontent.com/u/158416334?s=400&u=8b107573aea2d1c92bf09fa0f98703746f2a2815&v=4"
-            alt="Channel Logo"
-          />
-        </div>
-        <div className="flex flex-col">
-          <div className="flex justify-between pr-1">
-            <p className="font-medium text-[16px] w-[95%]">
-              Date With Girl I Met on OMEGLE 😍
-            </p>
-            <i className="fa-solid fa-ellipsis-vertical invisible group-hover:visible" />
+      <div className="flex items-start space-x-3">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex-shrink-0" />
+        <div className="flex-1">
+          <h3 className="font-semibold mb-1 line-clamp-2 hover:text-purple-400 transition-colors">
+            Travel Vlog: Exploring Hidden Paradise Islands
+          </h3>
+          <p className="text-sm text-gray-400 mb-1">Adventure Seekers</p>
+          <div className="flex items-center text-xs text-gray-500 space-x-2">
+            <span>3.5M views</span>
+            <span>•</span>
+            <span>1 week ago</span>
           </div>
-          <p className="flex text-gray-500 text-sm items-center gap-1 mt-[0.15rem]">
-            Adarsh Singh Extra
-            <i className="fa-solid fa-circle-check text-[0.7rem]" />
-          </p>
-          <p className="flex text-gray-500 text-sm items-center">
-            3.5M views <i className="fa-solid fa-circle text-[0.2rem] mx-2" /> 3
-            weeks ago
-          </p>
         </div>
       </div>
     </div>
