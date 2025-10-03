@@ -13,7 +13,7 @@ const ErrorPage1 = () => {
         Page Not Found
       </h1>
       <p className="text-lg text-gray-400 mb-10 max-w-lg">
-        {error.error.message}
+        {error.error?.message}
       </p>
       <div className="space-x-4">
         <button

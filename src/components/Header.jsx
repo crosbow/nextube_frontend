@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import BelIcon from "../assets/icons/BelIcon";
+import useUserProfile from "../hooks/useUserProfile";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 
 const Header = () => {
+  const user = useUserProfile();
+
   return (
     <nav className="sticky top-0 left-0 right-0 z-40 glass">
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -19,9 +22,17 @@ const Header = () => {
               Upload
             </button>
 
-            <Link to="/profile">
+            {user ? (
+              <Link to="/profile">
+                <img
+                  src={user.avatar}
+                  className="w-10 h-10 rounded-full ring-2 ring-purple-500"
+                  alt={user.fullname}
+                />
+              </Link>
+            ) : (
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 cursor-pointer" />
-            </Link>
+            )}
           </div>
         </div>
       </div>

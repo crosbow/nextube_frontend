@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import login_action from "./actions/login_action";
+import signup_action from "./actions/signup_action";
 import ErrorPage1 from "./components/ErrorPage1";
 import "./index.css";
 import DashboardLayout from "./layouts/DashboardLayout";
 import MainLayout from "./layouts/MainLayout";
+import Login from "./pages/auth/login/Login";
+import Signup from "./pages/auth/signup/Signup";
 import Overview from "./pages/dashboard/Overview";
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Watch from "./pages/watch-video/Watch";
 
@@ -57,6 +60,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement: <ErrorPage1 />,
+    action: login_action,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    errorElement: <ErrorPage1 />,
+    action: signup_action,
   },
   {
     path: "/dashboard",

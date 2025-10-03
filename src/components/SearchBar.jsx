@@ -5,7 +5,7 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="Search videos, channels, categories..."
-          className="w-full px-6 py-3 pl-12 bg-gray-800 bg-opacity-50 rounded-2xl border border-gray-700 focus:border-purple-500 focus:outline-none transition-all"
+          className="rounded-s-full w-full px-6 py-3 pl-12 bg-gray-800 bg-opacity-50 rounded-2xl border border-gray-700 focus:border-purple-500 focus:outline-none transition-all"
         />
         <svg
           className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
