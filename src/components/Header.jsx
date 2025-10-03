@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import BelIcon from "../assets/icons/BelIcon";
 import useUserProfile from "../hooks/useUserProfile";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
+import UploadVideo from "./UploadVideo";
 
 const Header = () => {
   const user = useUserProfile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 left-0 right-0 z-40 glass">
@@ -18,9 +21,17 @@ const Header = () => {
             <button className="p-3 rounded-xl hover:bg-gray-800 transition-all">
               <BelIcon />
             </button>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 font-semibold transition-all">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 font-semibold transition-all"
+            >
               Upload
             </button>
+
+            <UploadVideo
+              open={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
 
             {user ? (
               <Link to="/profile">

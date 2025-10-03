@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import login_action from "./actions/login_action";
 import signup_action from "./actions/signup_action";
+import upload_video_action from "./actions/upload_video_action";
 import ErrorPage1 from "./components/ErrorPage1";
 import "./index.css";
 import DashboardLayout from "./layouts/DashboardLayout";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <MainLayout />,
     errorElement: <ErrorPage1 />,
+    action: upload_video_action,
     children: [
       {
         errorElement: <ErrorPage1 />,
