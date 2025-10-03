@@ -1,16 +1,37 @@
+import { useLoaderData } from "react-router-dom";
+
 const VideoDetails = () => {
+  const video = useLoaderData();
+
+  const {
+    comments,
+    title,
+    description,
+    likesCount,
+    subscribersCount,
+    thumbnail,
+    views,
+    duration,
+    videoUrl,
+  } = video.data || {};
+
+  console.log(video);
+
   return (
     <div className="lg:col-span-2 space-y-8">
       <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/40">
-        <img
-          src="example.jpg"
-          className="aspect-video bg-gradient-to-br from-purple-800 to-indigo-900 flex items-center justify-center"
-          alt=""
-        />
+        <div
+          className=" flex items-center justify-center"
+          style={{
+            backgroundImage: thumbnail,
+          }}
+        >
+          <video autoPlay controls className="aspect-video">
+            <source src={videoUrl} />
+          </video>
+        </div>
       </div>
-      <h1 className="text-3xl font-extrabold">
-        The Future of Web Development: AI &amp; Beyond - Full Stream
-      </h1>
+      <h1 className="text-3xl font-extrabold">{title}</h1>
       <div className="border-b border-gray-800 pb-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
           <div className="flex items-center space-x-4 mb-4 sm:mb-0">
@@ -23,7 +44,9 @@ const VideoDetails = () => {
                     id="check-icon"
                   />
                 </p>
-                <p className="text-sm text-gray-400">1.2M subscribers</p>
+                <p className="text-sm text-gray-400">
+                  {subscribersCount} subscribers
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-3 text-sm font-semibold">
@@ -33,7 +56,7 @@ const VideoDetails = () => {
               <div className="flex rounded-full bg-gray-800/80 divide-x divide-gray-700 overflow-hidden action-button-glow">
                 <button className="flex items-center space-x-2 px-4 py-2 hover:bg-gray-700 transition-colors">
                   <span id="like-icon" />
-                  <span>45K</span>
+                  <span>{likesCount}K</span>
                 </button>
                 <button className="px-4 py-2 hover:bg-gray-700 transition-colors transform rotate-180">
                   <span id="like-icon" />
@@ -48,23 +71,18 @@ const VideoDetails = () => {
         </div>
         <div className="p-6 rounded-2xl bg-gray-800/70">
           <div className="flex flex-wrap items-center text-sm text-gray-300 font-semibold mb-3 space-x-4">
-            <span>5.8M views</span>
+            <span>{views} views</span>
             <span>•</span>
             <span>1 day ago</span>
           </div>
           <p className="text-gray-300 line-clamp-3 transition-all duration-300 cursor-pointer text-base leading-relaxed">
-            Join us for an exclusive live discussion with industry experts about
-            the cutting-edge technologies shaping tomorrow. This session covers
-            the impact of AI on frontend and backend development, the rise of
-            serverless architecture, and what Web3 truly means for the average
-            user. We explore practical examples and future predictions that will
-            shape your career in the next five years.
+            {description}
           </p>
         </div>
         <div className="mt-8">
           <h2 className="text-xl font-bold mb-6 flex items-center">
             <span className="gradient-text bg-gradient-to-r from-purple-400 to-pink-400">
-              3,450 Comments
+              {comments?.length} Comments
             </span>
           </h2>
 

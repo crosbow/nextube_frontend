@@ -9,11 +9,14 @@ import "./index.css";
 import DashboardLayout from "./layouts/DashboardLayout";
 import MainLayout from "./layouts/MainLayout";
 import channel_info_loader from "./loaders/channel_info_loader";
+import get_video_loader from "./loaders/get_video_loader";
+import profile_video_loader from "./loaders/profile_video_loader";
 import Login from "./pages/auth/login/Login";
 import Signup from "./pages/auth/signup/Signup";
 import Overview from "./pages/dashboard/Overview";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import Videos from "./pages/profile/Videos";
 import Watch from "./pages/watch-video/Watch";
 
 const router = createBrowserRouter([
@@ -41,7 +44,8 @@ const router = createBrowserRouter([
               },
               {
                 path: "videos",
-                element: <h2>Videos</h2>,
+                element: <Videos />,
+                loader: profile_video_loader,
               },
               {
                 path: "playlists",
@@ -54,8 +58,9 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: "/watch/3soSxt",
+            path: "/watch/:videoId",
             element: <Watch />,
+            loader: get_video_loader,
           },
         ],
       },

@@ -7,7 +7,6 @@ import Label from "./ui/Label";
 
 const UploadVideo = ({ open, onClose }) => {
   const Fetcher = useFetcher();
-  console.log(Fetcher.data);
 
   if (Fetcher.data?.success == 200) {
     onClose();
