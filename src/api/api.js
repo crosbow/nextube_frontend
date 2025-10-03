@@ -17,8 +17,6 @@ let token = getToken();
 
 api.interceptors.request.use(
   (config) => {
-    console.log(token);
-
     config.headers = {
       Authorization: token,
     };

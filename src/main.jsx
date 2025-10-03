@@ -7,6 +7,7 @@ import ErrorPage1 from "./components/ErrorPage1";
 import "./index.css";
 import DashboardLayout from "./layouts/DashboardLayout";
 import MainLayout from "./layouts/MainLayout";
+import channel_info_loader from "./loaders/channel_info_loader";
 import Login from "./pages/auth/login/Login";
 import Signup from "./pages/auth/signup/Signup";
 import Overview from "./pages/dashboard/Overview";
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
           {
             path: "/profile",
             element: <Profile />,
+            loader: channel_info_loader,
             children: [
               {
                 index: true,
