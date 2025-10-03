@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
-    <nav className="sticky top-0 left-0 right-0 z-50 glass">
+    <nav className="sticky top-0 left-0 right-0 z-40 glass">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Logo />
