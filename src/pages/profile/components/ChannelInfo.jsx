@@ -31,7 +31,7 @@ const ChannelInfo = () => {
             <img
               src={avatar}
               alt={fullname}
-              className="rounded-full shadow-md "
+              className="rounded-full shadow-md  w-full h-full"
             />
           </div>
           <div>

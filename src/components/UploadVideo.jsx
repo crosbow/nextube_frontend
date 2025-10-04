@@ -1,4 +1,7 @@
+import { useContext, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
+import useEffectEvent from "../hooks/useEffectEvent";
+import { VideoUploadQueueContext } from "../providers/VideoUploadQueueProvider";
 import Modal from "./Modal";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
@@ -7,14 +10,36 @@ import Label from "./ui/Label";
 
 const UploadVideo = ({ open, onClose }) => {
   const Fetcher = useFetcher();
+  const { setVideo, isUploading, setIsUploading } = useContext(
+    VideoUploadQueueContext
+  );
 
-  if (Fetcher.data?.success == 200) {
+  const setUploadingStatus = useEffectEvent(() => {
     onClose();
-  }
+    setIsUploading(true);
+    const formData = Object.fromEntries(Fetcher.formData);
+
+    setVideo({
+      title: formData.title,
+      video: formData.video,
+    });
+  });
+
+  useEffect(() => {
+    if (Fetcher.state == "submitting" && !isUploading) {
+      setUploadingStatus();
+    }
+  }, [Fetcher.state, isUploading]);
+
+  useEffect(() => {
+    if (Fetcher.data?.data) {
+      setIsUploading(false);
+    }
+  }, [Fetcher.data?.data]);
 
   const isSubmitting = Fetcher.state === "submitting";
   return (
-    <Modal open={open}>
+    <Modal open={open} onClose={onClose}>
       <h2 className="text-3xl text-center font-bold">Upload Video</h2>
       <Fetcher.Form
         method="POST"
@@ -66,9 +91,6 @@ const UploadVideo = ({ open, onClose }) => {
 
         <Button variant="primary">
           {isSubmitting ? "Uploading..." : "Upload Now"}
-        </Button>
-        <Button onClick={onClose} variant="ghost">
-          close
         </Button>
       </Fetcher.Form>
     </Modal>

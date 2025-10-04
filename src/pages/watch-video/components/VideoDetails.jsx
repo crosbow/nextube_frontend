@@ -11,22 +11,23 @@ const VideoDetails = () => {
     subscribersCount,
     thumbnail,
     views,
-    duration,
     videoUrl,
   } = video.data || {};
 
-  console.log(video);
-
   return (
     <div className="lg:col-span-2 space-y-8">
-      <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/40">
+      <div className="relative rounded-md overflow-hidden shadow-2xl shadow-indigo-900/40">
         <div
           className=" flex items-center justify-center"
           style={{
             backgroundImage: thumbnail,
           }}
         >
-          <video autoPlay controls className="aspect-video">
+          <video
+            autoPlay
+            controls
+            className="aspect-video w-full h-full object-contain"
+          >
             <source src={videoUrl} />
           </video>
         </div>

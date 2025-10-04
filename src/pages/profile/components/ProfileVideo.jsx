@@ -10,12 +10,7 @@ const ProfileVideo = ({ video }) => {
       className={`video-card cursor-pointer rounded-2xl`}
     >
       <div className="relative rounded-xl overflow-hidden mb-4 group">
-        <div
-          className="aspect-video flex items-center justify-center"
-          style={{
-            backgroundImage: thumbnail,
-          }}
-        >
+        <div className="aspect-video bg-gray-800/80 shadow-inner shadow-2xl flex items-center justify-center">
           <video poster={thumbnail} muted className="aspect-video">
             <source src={videoUrl} />
           </video>
